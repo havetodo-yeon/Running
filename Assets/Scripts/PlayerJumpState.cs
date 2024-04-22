@@ -22,10 +22,9 @@ public class PlayerJumpState : PlayerGroundedState
 
     public override void Update()
     {
-        base.Update();
-        if(rb.velocity.y < 0 && player.IsGroundDetected())
+        if(rb.velocity.y <= 0)
         {
-            stateMachine.ChangeState(player.idleState);
+            stateMachine.ChangeState(player.airState);
         }
     }
 }

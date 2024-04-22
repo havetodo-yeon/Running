@@ -22,6 +22,7 @@ public class PlayerIdleState : PlayerGroundedState
     public override void Update()
     {
         base.Update();
+
         if (xInput != 0 || zInput != 0 && !player.isBusy)
         {
             stateMachine.ChangeState(player.moveState);

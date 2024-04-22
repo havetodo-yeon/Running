@@ -29,8 +29,9 @@ public class Player : MonoBehaviour
     public PlayerStateMachine stateMachine { get; private set; }
     public PlayerIdleState idleState { get; private set; }
     public PlayerMoveState moveState { get; private set; }
-    public PlayerJumpState jumpState { get; private set; }
     public PlayerDashState dashState { get; private set; }
+    public PlayerJumpState jumpState { get; private set; }
+    public PlayerAirState airState { get; private set; }
     //public PlayerHurtState hurtState { get; private set; }
     #endregion
 
@@ -44,8 +45,9 @@ public class Player : MonoBehaviour
         stateMachine = new PlayerStateMachine();
         idleState = new PlayerIdleState(stateMachine, this, "Idle");
         moveState = new PlayerMoveState(stateMachine, this, "Move");
-        jumpState = new PlayerJumpState(stateMachine, this, "Jump");
         dashState = new PlayerDashState(stateMachine, this, "Dash");
+        jumpState = new PlayerJumpState(stateMachine, this, "Jump");
+        airState = new PlayerAirState(stateMachine, this, "Jump");
         //hurtState = new PlayerHurtState(stateMachine, this, "Hurt;")
     }
 
@@ -61,8 +63,8 @@ public class Player : MonoBehaviour
     {
         stateMachine.currentState.Update();
     }
-
-    public IEnumerator BusyFor(float _seconds)
+    
+    public IEnumerator BusyFor(float _seconds)  //??
     {
         isBusy = true;
         yield return new WaitForSeconds(_seconds);
@@ -100,7 +102,7 @@ public class Player : MonoBehaviour
 
     public void SetVelocity(float _xVelocity, float _zvelocity)
     {
-        rb.velocity = new Vector3(_xVelocity, 0, _zvelocity);
+        rb.velocity = new Vector3(_xVelocity, rb.velocity.y, _zvelocity);
         Turn();
     }
     #endregion
