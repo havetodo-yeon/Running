@@ -533,18 +533,18 @@ ModelImporter:
         length: 0
         modified: 0
     skeleton:
-    - name: Ch46_nonPBR@Jump(Clone)
+    - name: Jump(Clone)
       parentName: 
       position: {x: 0, y: 0, z: 0}
       rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: Ch46
-      parentName: Ch46_nonPBR@Jump(Clone)
+      parentName: Jump(Clone)
       position: {x: -0, y: 0, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: mixamorig:Hips
-      parentName: Ch46_nonPBR@Jump(Clone)
+      parentName: Jump(Clone)
       position: {x: 0.0010818852, y: 0.7136212, z: -0.00043614148}
       rotation: {x: -0, y: -0, z: -0.000000011641532, w: 1}
       scale: {x: 0.99999994, y: 1, z: 1}

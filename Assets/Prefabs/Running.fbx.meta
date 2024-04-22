@@ -533,18 +533,18 @@ ModelImporter:
         length: 0
         modified: 0
     skeleton:
-    - name: Ch46_nonPBR@Running(Clone)
+    - name: Running(Clone)
       parentName: 
       position: {x: 0, y: 0, z: 0}
       rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: Ch46
-      parentName: Ch46_nonPBR@Running(Clone)
+      parentName: Running(Clone)
       position: {x: -0, y: 0, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: mixamorig:Hips
-      parentName: Ch46_nonPBR@Running(Clone)
+      parentName: Running(Clone)
       position: {x: -0.0027405624, y: 0.7136213, z: 0.00078148453}
       rotation: {x: -0, y: -0, z: 0.0000000014551915, w: 1}
       scale: {x: 1, y: 1, z: 0.99999994}

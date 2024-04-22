@@ -22,7 +22,13 @@ public class PlayerJumpState : PlayerGroundedState
 
     public override void Update()
     {
-        if(rb.velocity.y <= 0)
+        if (!player.IsGroundDetected() && Input.GetKeyDown(KeyCode.LeftControl))
+        {
+            Debug.Log("double!");
+            stateMachine.ChangeState(player.doubleJumpState);
+        }
+
+        if (rb.velocity.y <= 0)
         {
             stateMachine.ChangeState(player.airState);
         }

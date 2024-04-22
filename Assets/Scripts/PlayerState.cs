@@ -17,6 +17,8 @@ public class PlayerState
     protected float stateTimer;
     protected bool triggerCalled;
 
+    protected bool canDoubleJump;
+
     public PlayerState(PlayerStateMachine stateMachine, Player player, string animBoolName)
     {
         this.stateMachine = stateMachine;
@@ -29,6 +31,7 @@ public class PlayerState
         player.anim.SetBool(animBoolName, true);
         rb = player.rb;
         triggerCalled = false;
+        canDoubleJump = false;
     }
 
     public virtual void Update()

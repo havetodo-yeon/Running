@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UnityEngine;
 
 public class PlayerAirState : PlayerGroundedState
 {
@@ -24,6 +25,11 @@ public class PlayerAirState : PlayerGroundedState
     {
         base.Update();
 
+        if (!player.IsGroundDetected() && Input.GetKeyDown(KeyCode.LeftControl))
+        {
+            Debug.Log("double!");
+            stateMachine.ChangeState(player.doubleJumpState);
+        }
         if (player.IsGroundDetected())
         {
             stateMachine.ChangeState(player.idleState);

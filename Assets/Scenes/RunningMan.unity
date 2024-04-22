@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -190,7 +190,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a6f234fa350b7e4478ccd823e7325bff, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.981
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a6f234fa350b7e4478ccd823e7325bff, type: 3}
       propertyPath: m_LocalPosition.z
@@ -239,6 +239,10 @@ PrefabInstance:
     - target: {fileID: 5866666021909216657, guid: a6f234fa350b7e4478ccd823e7325bff, type: 3}
       propertyPath: m_CullingMode
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: a6f234fa350b7e4478ccd823e7325bff, type: 3}
+      propertyPath: m_WarningMessage
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: a6f234fa350b7e4478ccd823e7325bff, type: 3}
       propertyPath: m_ApplyRootMotion
@@ -693,7 +697,7 @@ MonoBehaviour:
   jumpForce: 5
   rotateSpeed: 7
   groundCheck: {fileID: 76090783}
-  groundCheckDistance: 1.06
+  groundCheckDistance: 1.21
   wallCheck: {fileID: 1285648034}
   wallCheckDistance: 0.26
   whatIsGround:

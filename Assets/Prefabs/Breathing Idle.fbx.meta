@@ -553,18 +553,18 @@ ModelImporter:
         length: 0
         modified: 0
     skeleton:
-    - name: Ch46_nonPBR@Breathing Idle(Clone)
+    - name: Breathing Idle(Clone)
       parentName: 
       position: {x: 0, y: 0, z: 0}
       rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: Ch46
-      parentName: Ch46_nonPBR@Breathing Idle(Clone)
+      parentName: Breathing Idle(Clone)
       position: {x: -0, y: 0, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: mixamorig:Hips
-      parentName: Ch46_nonPBR@Breathing Idle(Clone)
+      parentName: Breathing Idle(Clone)
       position: {x: 0.00007105768, y: 0.7136214, z: -0.0017460835}
       rotation: {x: 0.0000000014551917, y: -1.8189897e-10, z: 2.1600502e-10, w: 1}
       scale: {x: 0.99999994, y: 1, z: 1}

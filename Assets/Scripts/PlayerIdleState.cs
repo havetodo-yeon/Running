@@ -12,6 +12,7 @@ public class PlayerIdleState : PlayerGroundedState
     {
         base.Enter();
         player.ZeroVelocity();
+        //player.transform.rotation = Quaternion.Euler(0, player.transform.rotation.y, 0);
     }
 
     public override void Exit()

@@ -31,6 +31,7 @@ public class Player : MonoBehaviour
     public PlayerMoveState moveState { get; private set; }
     public PlayerDashState dashState { get; private set; }
     public PlayerJumpState jumpState { get; private set; }
+    public PlayerDoubleJumpState doubleJumpState { get; private set; }
     public PlayerAirState airState { get; private set; }
     //public PlayerHurtState hurtState { get; private set; }
     #endregion
@@ -47,6 +48,7 @@ public class Player : MonoBehaviour
         moveState = new PlayerMoveState(stateMachine, this, "Move");
         dashState = new PlayerDashState(stateMachine, this, "Dash");
         jumpState = new PlayerJumpState(stateMachine, this, "Jump");
+        doubleJumpState = new PlayerDoubleJumpState(stateMachine, this, "DoubleJump");
         airState = new PlayerAirState(stateMachine, this, "Jump");
         //hurtState = new PlayerHurtState(stateMachine, this, "Hurt;")
     }
@@ -90,6 +92,7 @@ public class Player : MonoBehaviour
     {
         Quaternion playerRotation = Quaternion.LookRotation(rb.velocity);
         rb.rotation = Quaternion.Slerp(rb.rotation, playerRotation, rotateSpeed * Time.deltaTime);
+        //gameObject.transform.rotation = Quaternion.Euler(0, gameObject.transform.rotation.y, 0);
     }
 
     #endregion

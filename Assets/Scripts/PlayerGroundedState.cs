@@ -23,9 +23,10 @@ public class PlayerGroundedState : PlayerState
         base.Update();
         if (Input.GetKeyDown(KeyCode.LeftControl) && player.IsGroundDetected())
         {
+            Debug.Log("jump!");
             stateMachine.ChangeState(player.jumpState);
         }
-        if (Input.GetKeyDown(KeyCode.Z))
+        if (Input.GetKeyDown(KeyCode.Z) && player.IsGroundDetected())
         {
             stateMachine.ChangeState(player.dashState);
         }
