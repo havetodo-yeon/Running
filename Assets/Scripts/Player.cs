@@ -19,9 +19,10 @@ public class Player : MonoBehaviour
     [Header("Collision info")]
     [SerializeField] protected Transform groundCheck;
     [SerializeField] protected float groundCheckDistance;
-    [SerializeField] protected Transform wallCheck;
-    [SerializeField] protected float wallCheckDistance;
     [SerializeField] protected LayerMask whatIsGround;
+    /*    [SerializeField] protected Transform wallCheck;
+    [SerializeField] protected float wallCheckDistance;
+*/
 
 
 
@@ -33,6 +34,8 @@ public class Player : MonoBehaviour
     public PlayerJumpState jumpState { get; private set; }
     public PlayerDoubleJumpState doubleJumpState { get; private set; }
     public PlayerAirState airState { get; private set; }
+    public PlayerFallState fallState { get; private set; }
+    public PlayerFallFlatState fallFlatState { get; private set; }
     //public PlayerHurtState hurtState { get; private set; }
     #endregion
 
@@ -50,6 +53,8 @@ public class Player : MonoBehaviour
         jumpState = new PlayerJumpState(stateMachine, this, "Jump");
         doubleJumpState = new PlayerDoubleJumpState(stateMachine, this, "DoubleJump");
         airState = new PlayerAirState(stateMachine, this, "Jump");
+        fallState = new PlayerFallState(stateMachine, this, "Fall");
+        fallFlatState = new PlayerFallFlatState(stateMachine, this, "Fall");
         //hurtState = new PlayerHurtState(stateMachine, this, "Hurt;")
     }
 
@@ -75,12 +80,10 @@ public class Player : MonoBehaviour
 
     #region Collision
     public bool IsGroundDetected() => Physics.Raycast(groundCheck.position, Vector3.down, groundCheckDistance, whatIsGround);
-    public bool IsWallDetected() => Physics.Raycast(wallCheck.position, Vector3.forward * facingDir, wallCheckDistance, whatIsGround);
 
     protected virtual void OnDrawGizmos()
     {
         Gizmos.DrawLine(groundCheck.position, groundCheck.position + Vector3.down * groundCheckDistance);
-        Gizmos.DrawLine(wallCheck.position, wallCheck.position + Vector3.forward * facingDir * wallCheckDistance);
     }
     #endregion
 
@@ -90,11 +93,21 @@ public class Player : MonoBehaviour
     #region Turn
     public void Turn()
     {
-        Quaternion playerRotation = Quaternion.LookRotation(rb.velocity);
-        rb.rotation = Quaternion.Slerp(rb.rotation, playerRotation, rotateSpeed * Time.deltaTime);
-        //gameObject.transform.rotation = Quaternion.Euler(0, gameObject.transform.rotation.y, 0);
-    }
+        // 플레이어의 속도가 거의 0이 아닐 때만 회전을 업데이트합니다.
+        // 여기서 0.1f는 임계값이며, 상황에 따라 조정이 필요할 수 있습니다.
+        if (rb.velocity.sqrMagnitude > 0.1f)
+        {
+            // rb.velocity 방향을 바라보는 Quaternion을 생성합니다.
+            Quaternion playerRotation = Quaternion.LookRotation(rb.velocity.normalized);
 
+            // X와 Z축의 회전을 무시하고 Y축 회전만을 적용합니다.
+            playerRotation = Quaternion.Euler(0, playerRotation.eulerAngles.y, 0);
+
+            // Quaternion.Slerp를 사용하지 않고, playerRotation을 직접 적용합니다.
+            rb.rotation = playerRotation;
+        }
+        // 속도가 거의 0인 경우, rb.rotation을 업데이트하지 않습니다.
+    }
     #endregion
 
     #region Velocity

@@ -25,9 +25,13 @@ public class PlayerAirState : PlayerGroundedState
     {
         base.Update();
 
+        if(rb.velocity.y <= -8)
+        {
+            stateMachine.ChangeState(player.fallState);
+        }
+
         if (!player.IsGroundDetected() && Input.GetKeyDown(KeyCode.LeftControl))
         {
-            Debug.Log("double!");
             stateMachine.ChangeState(player.doubleJumpState);
         }
         if (player.IsGroundDetected())

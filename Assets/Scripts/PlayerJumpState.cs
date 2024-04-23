@@ -24,7 +24,6 @@ public class PlayerJumpState : PlayerGroundedState
     {
         if (!player.IsGroundDetected() && Input.GetKeyDown(KeyCode.LeftControl))
         {
-            Debug.Log("double!");
             stateMachine.ChangeState(player.doubleJumpState);
         }
 
