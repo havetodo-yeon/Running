@@ -29,7 +29,7 @@ public class PlayerGroundedState : PlayerState
         {
             stateMachine.ChangeState(player.dashState);
         }
-        if (rb.velocity.y <= 0)
+        if (rb.velocity.y <= -8)
         {
             stateMachine.ChangeState(player.fallState);
         }

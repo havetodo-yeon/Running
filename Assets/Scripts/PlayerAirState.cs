@@ -25,21 +25,20 @@ public class PlayerAirState : PlayerGroundedState
     {
         base.Update();
 
+        if (!player.IsGroundDetected() && Input.GetKeyDown(KeyCode.LeftControl))
+        {
+            stateMachine.ChangeState(player.doubleJumpState);
+        }
+        if (player.IsGroundDetected() && rb.velocity.y <= 0)
+        {
+            stateMachine.ChangeState(player.idleState);
+        }
         if(rb.velocity.y <= -8)
         {
             stateMachine.ChangeState(player.fallState);
         }
 
-        if (!player.IsGroundDetected() && Input.GetKeyDown(KeyCode.LeftControl))
-        {
-            stateMachine.ChangeState(player.doubleJumpState);
-        }
-        if (player.IsGroundDetected())
-        {
-            stateMachine.ChangeState(player.idleState);
-        }
 
-        // 2단 점프 추후 구현
 
     }
 }

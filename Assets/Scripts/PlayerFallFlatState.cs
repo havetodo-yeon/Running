@@ -21,12 +21,12 @@ public class PlayerFallFlatState : PlayerState
     public override void Update()
     {
         base.Update();
-        if (Input.GetKeyDown(KeyCode.Z) && player.IsGroundDetected())
+/*        if (Input.GetKeyDown(KeyCode.Z) && player.IsGroundDetected())
         {
             Debug.Log("착지대시!!!!!");
         }
 
-        if (player.IsGroundDetected())
+*/        if (player.IsGroundDetected())
         {
             Debug.Log("착지!!!!!"); 
             stateMachine.ChangeState(player.idleState);

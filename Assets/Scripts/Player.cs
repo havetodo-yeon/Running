@@ -24,8 +24,6 @@ public class Player : MonoBehaviour
     [SerializeField] protected float wallCheckDistance;
 */
 
-
-
     #region States
     public PlayerStateMachine stateMachine { get; private set; }
     public PlayerIdleState idleState { get; private set; }
@@ -36,7 +34,7 @@ public class Player : MonoBehaviour
     public PlayerAirState airState { get; private set; }
     public PlayerFallState fallState { get; private set; }
     public PlayerFallFlatState fallFlatState { get; private set; }
-    //public PlayerHurtState hurtState { get; private set; }
+    public PlayerHurtState hurtState { get; private set; }
     #endregion
 
     #region Animator
@@ -55,7 +53,7 @@ public class Player : MonoBehaviour
         airState = new PlayerAirState(stateMachine, this, "Jump");
         fallState = new PlayerFallState(stateMachine, this, "Fall");
         fallFlatState = new PlayerFallFlatState(stateMachine, this, "Fall");
-        //hurtState = new PlayerHurtState(stateMachine, this, "Hurt;")
+        hurtState = new PlayerHurtState(stateMachine, this, "Hurt");
     }
 
     private void Start()
@@ -86,7 +84,6 @@ public class Player : MonoBehaviour
         Gizmos.DrawLine(groundCheck.position, groundCheck.position + Vector3.down * groundCheckDistance);
     }
     #endregion
-
 
     public void AnimationTrigger() => stateMachine.currentState.AnimationFinishTrigger();
 
